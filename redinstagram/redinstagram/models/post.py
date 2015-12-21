@@ -7,13 +7,20 @@ class PostManager(models.Manager):
 
 class Post(models.Model):
 
+    provider_hashid = models.CharField(
+        max_length=16,
+        unique=True,
+        verbose_name='인스타그램 ID',
+    )
+
     content = models.TextField(
         blank=True,
         null=True,
     )
 
     image_url = models.URLField(
-        unique=True,
+        blank=True,
+        null=True,
         verbose_name='원본 이미지 URL',
     )
     image = models.ImageField(
