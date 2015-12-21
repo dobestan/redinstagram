@@ -30,6 +30,11 @@ class Hashtag(models.Model):
         ordering = ['name', ]
         get_latest_by = 'created_at'
 
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+
+        return reverse('hashtag:detail', kwargs={'slug': self.name, }, )
+
     def __str__(self):
         return self.name
 
