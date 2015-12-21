@@ -7,10 +7,15 @@ class PostManager(models.Manager):
 
 class Post(models.Model):
 
-    provider_hashid = models.CharField(
+    provider_hash_id = models.CharField(
         max_length=16,
         unique=True,
         verbose_name='인스타그램 ID',
+    )
+    hash_id = models.CharField(
+        max_length=8,
+        blank=True,
+        null=True,
     )
 
     content = models.TextField(
@@ -40,3 +45,9 @@ class Post(models.Model):
 
         ordering = ['-created_at', ]
         get_latest_by = 'created_at'
+
+    def _create_hash_id(self):
+        from redinstagram.utils.hashids import get_encoded_hashid
+
+        self.hash_id = get_encoded_hashid(self)
+        self.save()
