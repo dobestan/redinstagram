@@ -46,6 +46,11 @@ class Post(models.Model):
         ordering = ['-created_at', ]
         get_latest_by = 'created_at'
 
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+
+        return reverse('post:detail', kwargs={'slug': self.hash_id, }, )
+
     def _create_hash_id(self):
         from redinstagram.utils.hashids import get_encoded_hashid
 

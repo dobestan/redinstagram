@@ -18,5 +18,6 @@ urlpatterns = [
     ], namespace='hashtag')),
 
     url(r'^posts/', include([
+        url(r'^(?P<slug>\w+)/$', PostDetailView.as_view(), name='detail'),
     ], namespace='post')),
 ]
