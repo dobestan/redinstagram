@@ -7,6 +7,11 @@ class HashtagManager(models.Manager):
 
 class Hashtag(models.Model):
 
+    posts = models.ManyToManyField(
+        'Post',
+        blank=True,
+    )
+
     name = models.CharField(
         max_length=128,
         unique=True,

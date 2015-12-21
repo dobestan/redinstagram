@@ -11,6 +11,7 @@ class PostModelAdmin(admin.ModelAdmin):
     )
 
     list_filter = admin.ModelAdmin.list_filter + (
+        'hashtag',
     )
 
     inlines = (
