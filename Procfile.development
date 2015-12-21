@@ -1,0 +1,4 @@
+web: python redinstagram/manage.py runserver_plus 0.0.0.0:8000
+worker: celery --workdir=redinstagram/ --app=redinstagram.celery:app worker --loglevel INFO
+beat: celery --workdir=redinstagram/ --app=redinstagram.celery:app beat --loglevel INFO
+flower: celery --workdir=redinstagram/ --app=redinstagram.celery:app flower
