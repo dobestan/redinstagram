@@ -1,5 +1,7 @@
 from django.db import models
 
+from redinstagram.utils.image import post_image_upload_to
+
 
 class PostManager(models.Manager):
     pass
@@ -29,6 +31,7 @@ class Post(models.Model):
         verbose_name='원본 이미지 URL',
     )
     image = models.ImageField(
+        upload_to=post_image_upload_to,
         blank=True,
         null=True,
         verbose_name='이미지',
