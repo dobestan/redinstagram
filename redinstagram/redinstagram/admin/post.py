@@ -1,16 +1,17 @@
 from django.contrib import admin
 
-from instagram.models import Hashtag
+from redinstagram.models import Post
 
 
-@admin.register(Hashtag)
-class HashtagModelAdmin(admin.ModelAdmin):
+@admin.register(Post)
+class PostModelAdmin(admin.ModelAdmin):
     list_display = admin.ModelAdmin.list_display + (
         'created_at',
         'updated_at',
     )
 
     list_filter = admin.ModelAdmin.list_filter + (
+        'hashtag',
     )
 
     inlines = (

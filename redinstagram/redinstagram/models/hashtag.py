@@ -32,3 +32,6 @@ class Hashtag(models.Model):
 
     def __str__(self):
         return self.name
+
+    def update_posts(self):
+        pass

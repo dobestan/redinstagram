@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class InstagramAppConfig(AppConfig):
-    name = 'instagram'
+class RedinstagramAppConfig(AppConfig):
+    name = 'redinstagram'
 
     def ready(self):
         pass

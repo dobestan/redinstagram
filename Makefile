@@ -10,7 +10,7 @@ clean:
 
 # target: migrate - Migrate all django applications considering app dependencies
 migrate:
-	python redinstagram/manage.py makemigrations instagram
+	python redinstagram/manage.py makemigrations redinstagram
 	python redinstagram/manage.py migrate
 
 
