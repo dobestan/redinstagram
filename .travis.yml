@@ -1,0 +1,19 @@
+language: python
+python:
+- '3.5'
+addons:
+  postgresql: '9.4'
+install:
+- pip install -r requirements.txt
+- pip install -r requirements/development.txt
+- pip install coveralls
+before_script:
+- psql -c 'CREATE DATABASE redinstagram;' -U postgres
+script:
+- make migrate
+- make test
+after_success:
+- coveralls
+notifications:
+  slack:
+    secure: LrvNZViwAedHbLkhYGC0OaLcRAO8tl2yFfSdtXe5zCDsCwrGtDQL/z116L1Tl3v7uyNAWVaKembIHG/zF1xCSjsOP1sDx9J2jgncxW1isG+xc2UPQm4qDfE2/SYwS+K/vdLbDSsACxZA85S4dl6ssGpSbxpbFsTF6rvjUsknKYKCTsbOF9NvPsi54bu1jf3rbaI1imy2IaPcGJjqFA2ZoOkiHl+J3Va2pMDmm5vWIxHIlQFYuq/GkQba3u3TCfK9MgcrydxP/5hbHFvmVz4spuDcWomOu4Dspr5bJDBphxy9nr79DvOibV/4kc5GuJ5T0HrinLzNpMvb3ftCNoBkKFp6kBNddCPhXWqTyS4QZkE2hmmAAFAZ+o1Dtdq3uZoJxouRfCbpyZQs0D4e8Ip4PNi8jFmTKRcKIw3AJ/R1FFl2AXkSTWv+VxxDzlgjR1oTXL+YgfldY+2ZuYy3Rnw7DAl1f7gsy4umG8oZPGlg8GYMPblay4G1Pb0ITHP144pLti7A7Zqbl/FTocx67BusPXWLDxfNYyK6sa2yrGOyDUDDyXLdaPUnQRWp5wmJtPbn+BCXxVcNRLoLIOXCX3Wdy9lg989l02kVlsUO1p62snTG2qAxNLvPSy9s94qrZ/PyA7eqNpO+VKnhdXUoWS5r4oDNcTWV6WRBTreB/fheWoI=
