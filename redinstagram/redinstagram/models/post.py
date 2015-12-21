@@ -12,6 +12,16 @@ class Post(models.Model):
         null=True,
     )
 
+    image_url = models.URLField(
+        unique=True,
+        verbose_name='원본 이미지 URL',
+    )
+    image = models.ImageField(
+        blank=True,
+        null=True,
+        verbose_name='이미지',
+    )
+
     created_at = models.DateTimeField(auto_now_add=True, )
     updated_at = models.DateTimeField(auto_now=True, )
 
