@@ -5,3 +5,6 @@ gunicorn
 honcho
 Pillow
 hashids
+celery
+flower
+redis
